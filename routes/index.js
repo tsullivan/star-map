@@ -1,8 +1,8 @@
 var mongo = require('mongoskin');
-var db = mongo.db("mongodb://localhost:27017/hiyagl", { native_parser: true });
+var db = mongo.db("mongodb://localhost:27017/hiyagl", { native_parser: true }); // TODO: move to config
 
 // star data from https://github.com/astronexus/HYG-Database/blob/master/hygxyz.csv
-db.bind('hygxyz');
+db.bind('hygxyz'); // TODO: move to config
 
 /*
  * Application routes
