@@ -1,6 +1,11 @@
 {
   "name": "star-map",
+  "main": "index.js",
   "version": "0.0.1",
+  "authors": [
+	"Tim Sullivan <tsullivan@paypal.com>"
+  ],
+  "description": "map of the stars application",
   "private": true,
   "scripts": {
     "start": "node index.js"

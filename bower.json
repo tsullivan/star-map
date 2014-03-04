@@ -1,11 +1,10 @@
 {
   "name": "star-map",
-  "main": "index.js",
   "version": "0.0.1",
   "authors": [
     "Tim Sullivan <tsullivan@paypal.com>"
   ],
-  "description": "map of the stars",
+  "description": "front-end code for map of the stars",
   "license": "MIT",
   "private": true,
   "ignore": [
