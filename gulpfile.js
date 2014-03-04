@@ -1,4 +1,5 @@
 var gulp = require('gulp'),
+	concat = require('gulp-concat'),
 	log = require('gulp-util').log,
 	jshint = require('gulp-jshint'),
 	less = require('gulp-less'),
@@ -11,6 +12,7 @@ function startnodemon () {
 	// start the express app
 	nodemon({
 		script: 'index.js',
+		ignore: ['gulpfile.js', 'src/**/*.js'],
 		ext: 'js json'
 	});
 
@@ -43,32 +45,48 @@ function notifylr (event) {
 
 // gulp tasks
 gulp.task('lint', function() {
-	gulp.src(['gulpfile.js', './src/*.js'])
+	gulp.src(['gulpfile.js', 'src/*.js'])
 		.pipe(jshint({
 			lookup: false
 		}))
 		.pipe(jshint.reporter('default'));
 	});
 
+gulp.task('scripts', function () {
+	gulp.src([
+			'vendor/lodash/dist/lodash.underscore.min.js',
+			'vendor/jquery/dist/jquery.min.js',
+			'vendor/backbone/backbone.js',
+			'src/main.js',
+		])
+		.pipe(concat('build.js'))
+		.pipe(gulp.dest('public/js'));
+
+});
+
 gulp.task('less', function () {
-	gulp.src('./less/**/*.less')
+	gulp.src('less/**/*.less')
 		.pipe(less({
 			paths: [ path.join(__dirname, 'less') ]
 		}))
-		.pipe(gulp.dest('./public/css'));
+		.pipe(gulp.dest('public/css'));
 	});
 
 gulp.task('watch', function () {
 	log('Watching Files');
 
-	gulp.watch('./src/**/*.js', ['lint']);
-	gulp.watch('./less/**/*.less', ['less']);
+	gulp.watch('src/**/*.js', ['lint', 'scripts']);
+	gulp.watch('less/**/*.less', ['less']);
 
-	gulp.watch(['./public/**/*.css', './views/index.jade'], notifylr);
+	gulp.watch([
+			'public/**/*.css',
+			'public/**/*.js',
+			'views/**/*.jade'
+		], notifylr);
 });
 
 // default task
-gulp.task('default', ['lint', 'less', 'watch'], function () {
+gulp.task('default', ['lint', 'less', 'scripts', 'watch'], function () {
 	// start dev servers
 	startlr();
 	startnodemon();
