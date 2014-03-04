@@ -12,7 +12,7 @@ function startnodemon () {
 	// start the express app
 	nodemon({
 		script: 'index.js',
-		ignore: ['gulpfile.js', 'src/**/*.js'],
+		ignore: ['gulpfile.js', 'client/**/*.js'],
 		ext: 'js json'
 	});
 
@@ -45,7 +45,7 @@ function notifylr (event) {
 
 // gulp tasks
 gulp.task('lint', function() {
-	gulp.src(['gulpfile.js', 'src/*.js'])
+	gulp.src(['gulpfile.js', 'client/*.js'])
 		.pipe(jshint({
 			lookup: false
 		}))
@@ -57,7 +57,7 @@ gulp.task('scripts', function () {
 			'vendor/lodash/dist/lodash.underscore.min.js',
 			'vendor/jquery/dist/jquery.min.js',
 			'vendor/backbone/backbone.js',
-			'src/main.js',
+			'client/main.js',
 		])
 		.pipe(concat('build.js'))
 		.pipe(gulp.dest('public/js'));
@@ -75,7 +75,7 @@ gulp.task('less', function () {
 gulp.task('watch', function () {
 	log('Watching Files');
 
-	gulp.watch('src/**/*.js', ['lint', 'scripts']);
+	gulp.watch('client/**/*.js', ['lint', 'scripts']);
 	gulp.watch('less/**/*.less', ['less']);
 
 	gulp.watch([
