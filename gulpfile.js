@@ -64,7 +64,7 @@ gulp.task('watch', function () {
 	gulp.watch('./src/**/*.js', ['lint']);
 	gulp.watch('./less/**/*.less', ['less']);
 
-	gulp.watch(['./less/**/*.less', './views/index.jade'], notifylr);
+	gulp.watch(['./public/**/*.css', './views/index.jade'], notifylr);
 });
 
 // default task
