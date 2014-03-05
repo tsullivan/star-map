@@ -1,7 +1,23 @@
-var stars = new Backbone.Collection({});
-stars.url = '/star-data';
-stars.fetch();
+/*
+ * Star Map
+ * client/main.js
+ */
+var App = new (Backbone.View.extend({
 
-stars.on('sync', function (collection) {
-	console.log(collection.at(0).attributes);
-});
+	/*
+	 * Organize objects
+	 */
+	Collections: {
+		StarCollection: require('./StarCollection')
+	},
+	Models: {},
+	Views: {},
+
+	/*
+	 * Run app
+	 */
+	initialize: function () {
+		var stars = new this.Collections.StarCollection();
+		stars.fetch();
+	}
+}))();

@@ -5,6 +5,8 @@ var gulp = require('gulp'),
 	less = require('gulp-less'),
 	path = require('path'),
 	nodemon = require('nodemon'),
+	browserify = require('browserify'),
+	fs = require('fs'),
 	lr;
 
 // helper functions
@@ -12,7 +14,7 @@ function startnodemon () {
 	// start the express app
 	nodemon({
 		script: 'index.js',
-		ignore: ['gulpfile.js', 'client/**/*.js'],
+		ignore: ['gulpfile.js', 'client/*.js', 'public/*.js'],
 		ext: 'js json'
 	});
 
@@ -53,19 +55,22 @@ gulp.task('lint', function() {
 	});
 
 gulp.task('scripts', function () {
+	var b = browserify('./client/main.js')
+			.bundle()
+			.pipe(fs.createWriteStream(__dirname + '/public/js/app.js'));
+
 	gulp.src([
 			'vendor/lodash/dist/lodash.underscore.min.js',
 			'vendor/jquery/dist/jquery.min.js',
-			'vendor/backbone/backbone.js',
-			'client/main.js',
+			'vendor/backbone/backbone.js'
 		])
-		.pipe(concat('build.js'))
+		.pipe(concat('vendor.js'))
 		.pipe(gulp.dest('public/js'));
 
 });
 
 gulp.task('less', function () {
-	gulp.src('less/**/*.less')
+	gulp.src('less/*.less')
 		.pipe(less({
 			paths: [ path.join(__dirname, 'less') ]
 		}))
@@ -75,13 +80,13 @@ gulp.task('less', function () {
 gulp.task('watch', function () {
 	log('Watching Files');
 
-	gulp.watch('client/**/*.js', ['lint', 'scripts']);
-	gulp.watch('less/**/*.less', ['less']);
+	gulp.watch('client/*.js', ['lint', 'scripts']);
+	gulp.watch('less/*.less', ['less']);
 
 	gulp.watch([
-			'public/**/*.css',
-			'public/**/*.js',
-			'views/**/*.jade'
+			'public/css/style.css',
+			'public/js/app.js',
+			'views/*.jade'
 		], notifylr);
 });
 

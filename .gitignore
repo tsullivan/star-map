@@ -1,4 +1,4 @@
 node_modules
 vendor
 public/css
-public/js/build.js
+public/js
