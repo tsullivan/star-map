@@ -1,8 +1,7 @@
 var mongo = require('mongoskin');
-var db = mongo.db("mongodb://localhost:27017/hiyagl", { native_parser: true }); // TODO: move to config
 
 // star data from https://github.com/astronexus/HYG-Database/blob/master/hygxyz.csv
-db.bind('hygxyz'); // TODO: move to config
+var db = mongo.db("mongodb://localhost:27017/hiyagl", { native_parser: true }); // TODO: move to config
 
 /*
  * Application routes
@@ -19,16 +18,19 @@ module.exports = function (app) {
 	 * GET star data.
 	 */
 	app.get('/star-data', function(req, res){
-		db.hygxyz.findOne(function(err, item) {
-			if (err) {
-				res.json(500, { error: err.message || err });
-				console.log(err);
-			}
-			else {
-				res.json(item);
-			}
+		db.collection('hygxyz')
+			.find({ 'Mag': { $lt: 2 }})
+			.sort({Distance: 1})
+			.limit(250)
+			.toArray(function (err, items) {
+				if (err) {
+					res.json(500, { error: err.message || err });
+					console.log(err);
+				}
+				else {
+					res.json(items);
+				}
 		});
-
 	});
 }
 

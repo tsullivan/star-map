@@ -1,0 +1,43 @@
+table#datatable
+	thead
+		th StarID
+		th Name
+		th Gliese
+		th Bayer / Flamsteed
+
+		th distance in parsecs
+		th distance in light years
+
+		th apparent visual magnitude
+		th spectral type
+		th color index
+
+		th Right ascension
+		th Declination
+
+		th X
+		th Y
+		th Z
+	tbody
+
+script#datatabletemplate(type="text/template").
+	<tr>
+		<td><a href="details/<%= _id %>"><%= StarID %></a></td>
+		<td><a href="http://en.wikipedia.org/wiki/<%= ProperName %>"><%= ProperName %></a></td>
+		<td><a href="http://en.wikipedia.org/wiki/<%= Gliese %>"><%= Gliese %></a></td>
+		<td><a href="http://en.wikipedia.org/wiki/<%= BayerFlamsteed %>"><%= BayerFlamsteed %></a></td>
+
+		<td><%= Distance %></td>
+		<td><%= Distance %></td>
+
+		<td><%= Mag %></td>
+		<td><%= Spectrum %></td>
+		<td><%= ColorIndex %></td>
+
+		<td><%= RA %></td>
+		<td><%= Dec %></td>
+
+		<td><%= X %></td>
+		<td><%= Y %></td>
+		<td><%= Z %></td>
+	</tr>

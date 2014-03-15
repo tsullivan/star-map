@@ -86,7 +86,7 @@ gulp.task('watch', function () {
 	gulp.watch([
 			'public/css/style.css',
 			'public/js/app.js',
-			'views/*.jade'
+			'views/**/*.jade'
 		], notifylr);
 });
 

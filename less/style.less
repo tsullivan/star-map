@@ -1,14 +1,27 @@
-@font-size: 1rem;
-@font-default: @font-size "Lucida Grande", Helvetica, Arial, sans-serif;
+@font-size: 0.88rem;
+@font-default: @font-size Arial, sans-serif;
 
 @bg-color: #CBCBDD;
 @link-color: #0F3A88;
 
+@cell-bg-color: rgba(176, 177, 199, 0.31);
+
 body {
-	padding: 50px;
+	padding: 2px;
+	margin: 0;
 
 	background-color: @bg-color;
 	font: @font-default;
+}
+
+table {
+	th {
+		font-size: 80%;
+	}
+
+	th, td {
+		background-color: @cell-bg-color;
+	}
 }
 
 a {
