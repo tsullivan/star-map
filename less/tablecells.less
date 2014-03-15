@@ -1,0 +1,113 @@
+// crazy table colors
+th, td {
+	background-color: lighten(@cell-bg-color, 3%);
+
+	& + th,
+	& + td {
+		background-color: lighten(@cell-bg-color, 6%);
+	}
+	& + th + th,
+	& + td + td {
+		background-color: lighten(@cell-bg-color, 9%);
+	}
+	& + th + th + th,
+	& + td + td + td {
+		background-color: lighten(@cell-bg-color, 6%);
+	}
+	& + th + th + th + th,
+	& + td + td + td + td {
+		background-color: lighten(@cell-bg-color, 3%);
+	}
+}
+
+& + table {
+	th, td {
+		background-color: darken(@cell-bg-color, 3%);
+
+		& + th,
+		& + td {
+			background-color: darken(@cell-bg-color, 6%);
+		}
+		& + th + th,
+		& + td + td {
+			background-color: darken(@cell-bg-color, 9%);
+		}
+		& + th + th + th,
+		& + td + td + td {
+			background-color: darken(@cell-bg-color, 6%);
+		}
+		& + th + th + th + th,
+		& + td + td + td + td {
+			background-color: darken(@cell-bg-color, 3%);
+		}
+	}
+}
+
+& + table + table {
+	th, td {
+		background-color: lighten(@cell-bg-color, 3%);
+
+		& + th,
+		& + td {
+			background-color: lighten(@cell-bg-color, 6%);
+		}
+		& + th + th,
+		& + td + td {
+			background-color: lighten(@cell-bg-color, 9%);
+		}
+		& + th + th + th,
+		& + td + td + td {
+			background-color: lighten(@cell-bg-color, 6%);
+		}
+		& + th + th + th + th,
+		& + td + td + td + td {
+			background-color: lighten(@cell-bg-color, 3%);
+		}
+	}
+}
+
+& + table + table + table {
+	th, td {
+		background-color: darken(@cell-bg-color, 3%);
+
+		& + th,
+		& + td {
+			background-color: darken(@cell-bg-color, 6%);
+		}
+		& + th + th,
+		& + td + td {
+			background-color: darken(@cell-bg-color, 9%);
+		}
+		& + th + th + th,
+		& + td + td + td {
+			background-color: darken(@cell-bg-color, 6%);
+		}
+		& + th + th + th + th,
+		& + td + td + td + td {
+			background-color: darken(@cell-bg-color, 3%);
+		}
+	}
+}
+
+& + table + table + table + table {
+	th, td {
+		background-color: lighten(@cell-bg-color, 3%);
+
+		& + th,
+		& + td {
+			background-color: lighten(@cell-bg-color, 6%);
+		}
+		& + th + th,
+		& + td + td {
+			background-color: lighten(@cell-bg-color, 9%);
+		}
+		& + th + th + th,
+		& + td + td + td {
+			background-color: lighten(@cell-bg-color, 6%);
+		}
+		& + th + th + th + th,
+		& + td + td + td + td {
+			background-color: lighten(@cell-bg-color, 3%);
+		}
+	}
+}

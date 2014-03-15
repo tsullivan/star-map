@@ -6,7 +6,7 @@ var StarModel = require('./StarModel');
  * Collection view for star data table
  */
 module.exports = Backbone.View.extend({
-	el: '#datatable tbody',
+	el: '#datatable',
 
 	initialize: function () {
 		this.listenTo(this.collection, 'sync', function (models) {
@@ -18,7 +18,8 @@ module.exports = Backbone.View.extend({
 
 				// render the star view into an element and append the rendered
 				// element to this view
-				this.$el.append(starView.render());
+				starView.render();
+				this.$el.append(starView.$el);
 
 			}.bind(this));
 		});

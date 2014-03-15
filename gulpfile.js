@@ -70,7 +70,7 @@ gulp.task('scripts', function () {
 });
 
 gulp.task('less', function () {
-	gulp.src('less/*.less')
+	gulp.src('less/style.less')
 		.pipe(less({
 			paths: [ path.join(__dirname, 'less') ]
 		}))

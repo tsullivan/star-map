@@ -20,8 +20,8 @@ module.exports = function (app) {
 	app.get('/star-data', function(req, res){
 		db.collection('hygxyz')
 			.find({ 'Mag': { $lt: 4 }})
-			.sort({Distance: 1})
-			.limit(250)
+			.sort({Mag: 1})
+			.limit(500)
 			.toArray(function (err, items) {
 				if (err) {
 					res.json(500, { error: err.message || err });

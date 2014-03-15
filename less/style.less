@@ -1,13 +1,16 @@
 @font-size: 0.88rem;
 @font-default: @font-size Arial, sans-serif;
 
-@bg-color: #CBCBDD;
+@bg-color: #929194;
 @link-color: #0F3A88;
 
-@cell-bg-color: rgba(176, 177, 199, 0.31);
+@cell-bg-color: rgba(231, 229, 240, 0.5);
+@cell-bg-color-highlight: rgba(231, 229, 240, 1);
+
+@cell-padding: 2px;
 
 body {
-	padding: 2px;
+	padding: @cell-padding;
 	margin: 0;
 
 	background-color: @bg-color;
@@ -15,15 +18,47 @@ body {
 }
 
 table {
+	width: 100%;
+	max-width: 55em;
+	margin: 0 auto;
+	border-collapse: collapse;
+
+	th, td {
+		padding: @cell-padding;
+		text-align: center;
+	}
+
 	th {
 		font-size: 80%;
 	}
 
-	th, td {
-		background-color: @cell-bg-color;
+	&.names td,
+	&.names th {
+		width: 20%;
 	}
+
+	&.details td,
+	&.details th {
+		width: 20%;
+	}
+
+	&.numerics td,
+	&.numerics th {
+		width: 33%;
+	}
+
+	@import 'tablecells';
 }
 
 a {
 	color: @link-color;
 }
+
+.datacard {
+	margin-bottom: 1em;
+}
+
+table.highlight {
+	background-color: @cell-bg-color-highlight;
+}
+
