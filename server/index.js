@@ -19,7 +19,7 @@ module.exports = function (app) {
 	 */
 	app.get('/star-data', function(req, res){
 		db.collection('hygxyz')
-			.find({ 'Mag': { $lt: 2 }})
+			.find({ 'Mag': { $lt: 4 }})
 			.sort({Distance: 1})
 			.limit(250)
 			.toArray(function (err, items) {
