@@ -5,7 +5,6 @@ table#datatable
 		th Gliese
 		th Bayer / Flamsteed
 
-		th distance in parsecs
 		th distance in light years
 
 		th apparent visual magnitude
@@ -27,8 +26,7 @@ script#datatabletemplate(type="text/template").
 		<td><a href="http://en.wikipedia.org/wiki/<%= Gliese %>"><%= Gliese %></a></td>
 		<td><a href="http://en.wikipedia.org/wiki/<%= BayerFlamsteed %>"><%= BayerFlamsteed %></a></td>
 
-		<td><%= Distance %></td>
-		<td><%= Distance %></td>
+		<td><%= LightYearsAway %></td>
 
 		<td><%= Mag %></td>
 		<td><%= Spectrum %></td>
