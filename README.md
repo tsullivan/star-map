@@ -11,3 +11,4 @@ Interactive star data web app based on https://github.com/astronexus/HYG-Databas
 	- `gulp less && gulp scripts`
 	- `node index.js` to run the server
 - open http://localhost:3000
+- enjoy the majesty of our universe
